@@ -26,11 +26,11 @@ jobs:
 
       - name: Compile Java project
         run: mvn clean compile
-        working-directory: .github/workflows/
+        working-directory: .
 
       - name: Build and Dockerize with Jib
         run: run: mvn com.google.cloud.tools:jib-maven-plugin:3.1.1:build -Dimage=public.ecr.aws/u1u3e1y1/github-actions/javahelloworld:v1
-        working-directory: .github/workflows/
+        working-directory: .
 
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
