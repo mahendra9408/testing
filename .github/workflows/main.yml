@@ -25,7 +25,7 @@ jobs:
           javac Main.java
 
       - name: Build and Dockerize with Jib
-        run: mvn clean compile com.google.cloud.tools:jib-maven-plugin:3.1.1:build -Dimage=public.ecr.aws/u1u3e1y1/github-actions/javahelloworld:v1
+        run: mvn clean compile jib:build
         working-directory: .github/workflows/
 
       - name: Set up AWS credentials
