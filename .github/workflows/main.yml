@@ -24,12 +24,9 @@ jobs:
           echo "public class Main { public static void main(String[] args) { System.out.println(\"Hello, World!\"); } }" > Main.java
           javac Main.java
 
-      - name: Dockerize application with Jib
-        run: |
-          echo "FROM adoptopenjdk/openjdk11:alpine-slim
-          COPY Main.class /app/
-          CMD [\"java\", \"-cp\", \"/app\", \"Main\"]" > Dockerfile
-          mvn compile com.google.cloud.tools:jib-maven-plugin:3.1.1:build -Dimage=public.ecr.aws/u1u3e1y1/github-actions/javahelloworld:v1
+      - name: Build and Dockerize with Jib
+        run: mvn compile com.google.cloud.tools:jib-maven-plugin:3.1.1:build -Dimage=public.ecr.aws/u1u3e1y1/github-actions/javahelloworld:v1
+
 
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
