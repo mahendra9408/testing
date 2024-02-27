@@ -24,8 +24,12 @@ jobs:
           echo "public class Main { public static void main(String[] args) { System.out.println(\"Hello, World!\"); } }" > Main.java
           javac Main.java
 
+      - name: Compile Java project
+        run: mvn clean compile
+        working-directory: .github/workflows/
+
       - name: Build and Dockerize with Jib
-        run: mvn clean compile jib:build
+        run: run: mvn com.google.cloud.tools:jib-maven-plugin:3.1.1:build -Dimage=public.ecr.aws/u1u3e1y1/github-actions/javahelloworld:v1
         working-directory: .github/workflows/
 
       - name: Set up AWS credentials
