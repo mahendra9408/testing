@@ -29,7 +29,7 @@ jobs:
           echo "FROM adoptopenjdk/openjdk11:alpine-slim
           COPY Main.class /app/
           CMD [\"java\", \"-cp\", \"/app\", \"Main\"]" > Dockerfile
-          ./gradlew jib --image=public.ecr.aws/u1u3e1y1/github-actions/java-helloworld-v1
+          mvn compile com.google.cloud.tools:jib-maven-plugin:3.1.1:build -Dimage=public.ecr.aws/u1u3e1y1/github-actions/javahelloworld:v1
 
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
