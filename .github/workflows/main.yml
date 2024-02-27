@@ -26,7 +26,7 @@ jobs:
 
       - name: Build and Dockerize with Jib
         run: mvn compile com.google.cloud.tools:jib-maven-plugin:3.1.1:build -Dimage=public.ecr.aws/u1u3e1y1/github-actions/javahelloworld:v1
-        working-directory: testing/.github/workflows/
+        working-directory: .github/workflows/
 
       - name: Set up AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
